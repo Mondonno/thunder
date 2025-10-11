@@ -1,6 +1,6 @@
-# Copilot Task Manager
+# Thunder
 
-Copilot Task Manager is a VS Code extension that turns a high-level development plan into parallelizable tasks, spins up Git worktrees for each task, and guides GitHub Copilot agents through execution and review.
+Thunder is a VS Code extension that allows you to code at the speed of your plan with the help of GitHub Copilot. It turns a high-level development plan into parallelizable tasks, spins up Git worktrees for each task, and guides GitHub Copilot agents through execution and review.
 
 ## Prerequisites
 
@@ -21,7 +21,7 @@ Copilot Task Manager is a VS Code extension that turns a high-level development 
 
 ## Command Palette Entry
 
-- `Copilot Task Manager: Execute Plan with Copilot Agents` (`copilot-task-manager.executePlan`)
+- `Thunder: Execute Plan with Copilot Agents` (`thunder.executePlan`)
 
 Launching the command walks you through plan entry, task approval, dependency-aware execution, and review.
 
@@ -29,10 +29,10 @@ Launching the command walks you through plan entry, task approval, dependency-aw
 
 | Setting | Description | Default |
 | --- | --- | --- |
-| `copilotTaskManager.defaultModel` | Default model to use when Copilot doesn’t suggest one. | `gpt-4` |
-| `copilotTaskManager.worktreeDirectory` | Where Git worktrees are created. Relative paths resolve from the workspace root. | `../worktrees` |
-| `copilotTaskManager.maxParallelTasks` | Maximum number of tasks executed concurrently. | `3` |
-| `copilotTaskManager.autoMerge` | Merge approved worktrees automatically without manual review. | `false` |
+| `thunder.defaultModel` | Default model to use when Copilot doesn’t suggest one. | `gpt-4` |
+| `thunder.worktreeDirectory` | Where Git worktrees are created. Relative paths resolve from the workspace root. | `../worktrees` |
+| `thunder.maxParallelTasks` | Maximum number of tasks executed concurrently. | `3` |
+| `thunder.autoMerge` | Merge approved worktrees automatically without manual review. | `false` |
 
 ## Development Workflow
 

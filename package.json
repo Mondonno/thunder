@@ -1,7 +1,7 @@
 {
-  "name": "copilot-task-manager",
-  "displayName": "Copilot Task Manager",
-  "description": "Automated parallel task execution with GitHub Copilot",
+  "name": "thunder",
+  "displayName": "Thunder",
+  "description": "Visual Studio Code extension that allows you to code at the speed of your plan with the help of GitHub Copilot",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.74.0"
@@ -10,36 +10,36 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:copilot-task-manager.executePlan"
+    "onCommand:thunder.executePlan"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "copilot-task-manager.executePlan",
+        "command": "thunder.executePlan",
         "title": "Execute Plan with Copilot Agents",
-        "category": "Copilot Task Manager"
+        "category": "Thunder"
       }
     ],
     "configuration": {
-      "title": "Copilot Task Manager",
+      "title": "Thunder",
       "properties": {
-        "copilotTaskManager.defaultModel": {
+        "thunder.defaultModel": {
           "type": "string",
           "default": "gpt-4",
           "description": "Default model for task execution"
         },
-        "copilotTaskManager.worktreeDirectory": {
+        "thunder.worktreeDirectory": {
           "type": "string",
           "default": "../worktrees",
           "description": "Directory for creating worktrees"
         },
-        "copilotTaskManager.maxParallelTasks": {
+        "thunder.maxParallelTasks": {
           "type": "number",
           "default": 3,
           "description": "Maximum number of parallel tasks"
         },
-        "copilotTaskManager.autoMerge": {
+        "thunder.autoMerge": {
           "type": "boolean",
           "default": false,
           "description": "Automatically merge approved tasks"
@@ -52,7 +52,8 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "lint": "eslint src --ext .ts",
-    "test": "npm run compile && npx @vscode/test-cli"
+    "test": "npm run compile && npx @vscode/test-cli",
+    "check": "npm run lint && npm run test"
   },
   "devDependencies": {
     "@types/vscode": "^1.74.0",

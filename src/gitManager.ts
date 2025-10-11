@@ -61,7 +61,7 @@ export class GitManager {
 
     private resolveWorktreeRoot(): string {
         const configured = vscode.workspace
-            .getConfiguration('copilotTaskManager')
+            .getConfiguration('thunder')
             .get<string>('worktreeDirectory', '../worktrees');
 
         const candidate = configured ?? '../worktrees';

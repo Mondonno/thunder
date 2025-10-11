@@ -12,7 +12,7 @@ export function activate(context: vscode.ExtensionContext) {
 	logger = new Logger();
 	context.subscriptions.push(logger);
 
-	const disposable = vscode.commands.registerCommand('copilot-task-manager.executePlan', async () => {
+	const disposable = vscode.commands.registerCommand('thunder.executePlan', async () => {
 		if (!logger) {
 			return;
 		}
@@ -54,7 +54,7 @@ async function executePlanWorkflow(
 
 	const tasks = await taskManager.splitPlanIntoTasks(plan);
 	if (tasks.length === 0) {
-		vscode.window.showWarningMessage('Copilot Task Manager could not identify actionable tasks.');
+		vscode.window.showWarningMessage('Thunder could not identify actionable tasks.');
 		return;
 	}
 
@@ -73,7 +73,7 @@ async function executePlanWorkflow(
 		return;
 	}
 
-	const config = vscode.workspace.getConfiguration('copilotTaskManager');
+	const config = vscode.workspace.getConfiguration('thunder');
 	const maxParallel = Math.max(1, config.get<number>('maxParallelTasks', 3));
 	const autoMerge = config.get<boolean>('autoMerge', false);
 
