@@ -1,0 +1,76 @@
+{
+  "name": "copilot-task-manager",
+  "displayName": "Copilot Task Manager",
+  "description": "Automated parallel task execution with GitHub Copilot",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:copilot-task-manager.executePlan"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "copilot-task-manager.executePlan",
+        "title": "Execute Plan with Copilot Agents",
+        "category": "Copilot Task Manager"
+      }
+    ],
+    "configuration": {
+      "title": "Copilot Task Manager",
+      "properties": {
+        "copilotTaskManager.defaultModel": {
+          "type": "string",
+          "default": "gpt-4",
+          "description": "Default model for task execution"
+        },
+        "copilotTaskManager.worktreeDirectory": {
+          "type": "string",
+          "default": "../worktrees",
+          "description": "Directory for creating worktrees"
+        },
+        "copilotTaskManager.maxParallelTasks": {
+          "type": "number",
+          "default": 3,
+          "description": "Maximum number of parallel tasks"
+        },
+        "copilotTaskManager.autoMerge": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically merge approved tasks"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext .ts",
+    "test": "npm run compile && npx @vscode/test-cli"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^18.19.64",
+    "@typescript-eslint/eslint-plugin": "^8.45.0",
+    "@typescript-eslint/parser": "^8.45.0",
+    "eslint": "^9.36.0",
+    "typescript": "^5.9.3",
+    "ts-loader": "^9.5.4",
+    "webpack": "^5.102.0",
+    "webpack-cli": "^6.0.1",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2"
+  },
+  "dependencies": {
+    "@octokit/rest": "^21.0.2",
+    "node-fetch": "^3.3.2",
+    "simple-git": "^3.25.0"
+  }
+}
