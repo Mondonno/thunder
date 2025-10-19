@@ -9,26 +9,40 @@ import { Logger } from './logger';
 let logger: Logger | undefined;
 
 export function activate(context: vscode.ExtensionContext) {
-	logger = new Logger();
-	context.subscriptions.push(logger);
+	try {
+		logger = new Logger();
+		context.subscriptions.push(logger);
 
-	const disposable = vscode.commands.registerCommand('thunder.executePlan', async () => {
-		if (!logger) {
-			return;
+		const disposable = vscode.commands.registerCommand('thunder.executePlan', async () => {
+			if (!logger) {
+				vscode.window.showErrorMessage('Thunder: Logger is not initialized');
+				return;
+			}
+
+			try {
+				const taskManager = new TaskManager(logger);
+				const gitManager = new GitManager(logger);
+				const copilotManager = new CopilotManager(logger);
+				await executePlanWorkflow(taskManager, gitManager, copilotManager, logger);
+			} catch (error) {
+				const message = error instanceof Error ? error.message : String(error);
+				logger.log(`Failed to execute plan: ${message}`, 'error');
+				vscode.window.showErrorMessage(`Thunder: ${message}`);
+			}
+		});
+
+		context.subscriptions.push(disposable);
+		
+		// Show activation message
+		if (logger) {
+			logger.log('Thunder extension activated successfully', 'info');
 		}
-
-		try {
-			const taskManager = new TaskManager(logger);
-			const gitManager = new GitManager(logger);
-			const copilotManager = new CopilotManager(logger);
-			await executePlanWorkflow(taskManager, gitManager, copilotManager, logger);
-		} catch (error) {
-			const message = error instanceof Error ? error.message : String(error);
-			logger.log(`Failed to execute plan: ${message}`, 'error');
-		}
-	});
-
-	context.subscriptions.push(disposable);
+		vscode.window.showInformationMessage('Thunder extension is now active!');
+	} catch (error) {
+		const message = error instanceof Error ? error.message : String(error);
+		vscode.window.showErrorMessage(`Thunder activation failed: ${message}`);
+		console.error('Thunder activation error:', error);
+	}
 }
 
 export function deactivate() {

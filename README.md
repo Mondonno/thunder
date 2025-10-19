@@ -77,10 +77,30 @@ Launching the command walks you through plan entry, task approval, dependency-aw
 
 ## Testing
 
-- `src/test/taskManager.test.ts` exercises the heuristic task splitter. Run tests with the VS Code Test Explorer or via `npx @vscode/test-cli` after compiling.
+Thunder includes comprehensive tests to ensure proper activation and command registration:
+
+- **Extension Activation Tests** (`src/test/activation.test.ts`): Verifies the extension activates correctly, command registration succeeds, and error handling works without a workspace open.
+- **Task Manager Tests** (`src/test/taskManager.test.ts`): Exercises the heuristic task splitter and task dependency resolution.
+
+Run tests with:
+```bash
+npm test
+```
+
+Or use the VS Code Test Explorer after compiling with `npm run compile`.
+
+## Troubleshooting
+
+**Command not found after installation**: 
+- Ensure GitHub Copilot extension is installed and signed in
+- Reload VS Code (Ctrl+Shift+P > "Developer: Reload Window")
+- Check the "Thunder" output channel for activation logs
+- Verify the extension is listed as "Active" in Extensions view
 
 ## Release Notes
 
 ### 0.0.1
 
-- Initial preview of the automated Copilot task orchestration workflow.
+- Initial preview of the automated Copilot task orchestration workflow
+- Improved error handling and logging during extension activation
+- Comprehensive test coverage for command registration and activation

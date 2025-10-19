@@ -3,6 +3,10 @@
   "displayName": "Thunder",
   "description": "Visual Studio Code extension that allows you to code at the speed of your plan with the help of GitHub Copilot",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mondonno/thunder"
+  },
   "engines": {
     "vscode": "^1.74.0"
   },
