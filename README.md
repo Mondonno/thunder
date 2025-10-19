@@ -2,6 +2,39 @@
 
 Thunder is a VS Code extension that allows you to code at the speed of your plan with the help of GitHub Copilot. It turns a high-level development plan into parallelizable tasks, spins up Git worktrees for each task, and guides GitHub Copilot agents through execution and review.
 
+## Getting Started
+
+Follow these steps to install and start using Thunder in Visual Studio Code or VS Code Insiders.
+
+### Prerequisites
+
+- Visual Studio Code (or VS Code Insiders) installed
+- GitHub Copilot extension installed and signed in
+- A Git repository workspace (the extension works within Git repos)
+
+### Installation
+
+1. **Download the Extension**: Since Thunder is in development, download the `.vsix` package from the project's releases or build it locally using `npx vsce package` if you're contributing.
+2. **Install from VSIX**:
+   - Open VS Code or VS Code Insiders.
+   - Go to the Extensions view (Ctrl+Shift+X).
+   - Click the "..." menu in the top-right and select "Install from VSIX...".
+   - Select the downloaded `.vsix` file and install it.
+3. **Reload VS Code**: After installation, reload the window (Ctrl+Shift+P > "Developer: Reload Window") to activate the extension.
+
+### Usage
+
+1. **Open a Git Repository**: Ensure you're in a workspace that is a Git repository.
+2. **Access the Command**:
+   - Open the Command Palette (Ctrl+Shift+P or Cmd+Shift+P on Mac).
+   - Type and select "Thunder: Execute Plan with Copilot Agents".
+3. **Enter Your Plan**: Provide a high-level development plan when prompted.
+4. **Approve Tasks**: Review and approve the generated tasks in the dashboard.
+5. **Monitor Execution**: The extension will create worktrees, execute tasks with Copilot agents, and provide a review panel.
+6. **Merge Changes**: Approve and merge completed worktrees back to the main branch.
+
+For more details on configuration and features, see the sections below.
+
 ## Prerequisites
 
 - Node.js 18+
